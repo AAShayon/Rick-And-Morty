@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:ricky_monty/Modules/character/model/core/response_model/character_list_response_model.dart';
 
 class LandingViewModel with ChangeNotifier {
   int _currentIndex = 0;
-  String? _selectedCharacter;
+  Results? _results;
 
   int get currentIndex => _currentIndex;
-  String? get selectedCharacter => _selectedCharacter;
+  Results? get results=> _results;
 
-  void selectCharacter(String characterName) {
-    _selectedCharacter = characterName;
+  void selectCharacter(Results results) {
+   _results=results;
     _currentIndex = 1;
     notifyListeners();
   }
@@ -18,7 +19,7 @@ class LandingViewModel with ChangeNotifier {
     notifyListeners();
   }
   void deselectCharacter() {
-    _selectedCharacter = null;
+   _results=null;
     _currentIndex = 0;
     notifyListeners();
   }
