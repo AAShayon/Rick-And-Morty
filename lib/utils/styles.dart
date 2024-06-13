@@ -30,6 +30,7 @@ class TextStyles {
       fontSize: 15.sp,
       height: 1.33, // Line-height divided by font-size
       fontWeight: FontWeight.w600,
+      color: color
     );
   }
 
@@ -39,6 +40,7 @@ class TextStyles {
       fontSize: 17.sp,
       height: 1.29, // Line-height divided by font-size
       fontWeight: FontWeight.w400,
+      color: color
     );
   }
 
@@ -47,6 +49,15 @@ class TextStyles {
       fontFamily: fontFamily,
       fontSize: 17.sp,
       height: 1.29, // Line-height divided by font-size
+      fontWeight: FontWeight.w600,
+      color: color,
+    );
+  }
+  static TextStyle title4(Color? color) {
+    return TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 10.sp,
+      height: 1.8, // Line-height divided by font-size
       fontWeight: FontWeight.w600,
       color: color,
     );
