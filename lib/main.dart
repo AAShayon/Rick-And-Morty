@@ -3,12 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:ricky_monty/Modules/character/view/character_screen.dart';
+import 'package:ricky_monty/Modules/character/viewModel/character_view_model.dart';
 import 'package:ricky_monty/utils/colors.dart';
 import 'package:ricky_monty/view/landing_page.dart';
 import 'package:ricky_monty/view/splash_screen.dart';
 import 'package:ricky_monty/viewModel/landing_view_model.dart';
 
 void main() {
+  // await WidgetsBinding.instance.initInstances();
   runApp(const MyApp());
 }
 
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(create:(context)=>LandingViewModel()),
+          ChangeNotifierProvider(create:(context)=>CharacterViewModel()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
