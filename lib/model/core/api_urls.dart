@@ -1,5 +1,5 @@
 class ApiUrl{
-    static String baseUrl="https://rickandmortyapi.com/api";
-    static String character="/character";
+     String baseUrl="https://rickandmortyapi.com/api/";
+     String character="character";
 
 }

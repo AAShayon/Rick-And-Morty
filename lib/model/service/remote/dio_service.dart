@@ -7,7 +7,7 @@ import 'package:ricky_monty/model/service/local/shared_pre_service.dart';
 
 class DioService{
   static final DioService _singleton=DioService._internal();
-  static Dio? _dio;
+  Dio? _dio;
   final SharedPreService _sharedPreService =SharedPreService();
 
   factory DioService(){
@@ -19,10 +19,10 @@ class DioService{
 
   Future<void> setup()async{
     try{
-      String? bearerToken= await _sharedPreService.read(key:'token')??null;
+      String? bearerToken= await _sharedPreService.read(key:'token');
       _dio=Dio();
       final headers={
-        'Content_type':'application/json',
+        'Accept':'application/json',
       };
       if(bearerToken != null){
         headers['Authorization']='Bearer $bearerToken';
@@ -31,7 +31,7 @@ class DioService{
         }
       }
       final options=BaseOptions(
-          baseUrl: ApiUrl.baseUrl,
+          baseUrl: ApiUrl().baseUrl,
           headers: headers,
           validateStatus: (v){
             if(v == null){
@@ -41,7 +41,6 @@ class DioService{
               return v< 500 ;
             }
           }
-
       );
       _dio!.options=options;
       _dio!.interceptors.add(LogInterceptor(requestBody: true, responseBody: true,requestHeader: true,responseHeader: true));
@@ -64,7 +63,7 @@ class DioService{
       }
     }
     final options=BaseOptions(
-        baseUrl: ApiUrl.baseUrl,
+        baseUrl: ApiUrl().baseUrl,
         headers: headers,
         validateStatus: (v){
           if(v == null){
@@ -93,7 +92,25 @@ class DioService{
   }
   Future<Response?> get(String path,{Map<String,dynamic>? queryParameters}) async {
     try{
+      log("============>characterList api call dio service");
       final response=await _dio!.get(path,queryParameters: queryParameters);
+      return response;
+    } on FormatException catch (_) {
+      throw FormatException("Unable to process the data");
+    } catch (e) {
+      throw e;
+    }
+  }
+  Future<Response?> request(String path,{Map<String,dynamic>? queryParameters}) async {
+    try{
+      log("============>characterList api call dio service");
+      final response=await _dio!.request(
+          path,
+          queryParameters: queryParameters,
+          options: Options(
+          method: 'GET',
+          ),
+      );
       return response;
     } on FormatException catch (_) {
       throw FormatException("Unable to process the data");
