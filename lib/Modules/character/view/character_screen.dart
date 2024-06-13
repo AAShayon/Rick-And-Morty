@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:ricky_monty/Modules/character/view/widgets/character_details.dart';
 import 'package:ricky_monty/Modules/character/viewModel/character_view_model.dart';
 import 'package:ricky_monty/utils/colors.dart';
 import 'package:ricky_monty/utils/styles.dart';
@@ -58,7 +59,8 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
             ],
           ),
           body:SafeArea(
-            child: characterViewModel.newResults!=null?Stack(
+            child: characterViewModel.newResults!=null?
+            Stack(
               children: [
                 Container(
                   decoration: BoxDecoration(
@@ -100,41 +102,47 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
                         itemCount: characterViewModel.results.length,
                         itemBuilder: (context, index) {
                           return
-                            Container(
-                              height:180.84.h ,width: 177.18.w,
-                            decoration: BoxDecoration(
-                              // color: Colors.white.withOpacity(0.1),
-                             image: DecorationImage(image: AssetImage('assets/logo/Box.png'),fit: BoxFit.fill)
-                            ),
-                            child: Padding(
-                              padding:  EdgeInsets.symmetric(horizontal: 12.w,vertical: 12.h),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    height: 131.97.h,width: 157.63,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15)
-                                    ),
-                                    child: Image.network('${characterViewModel.results![index].image}',
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                  SizedBox(height: 12.h),
-                                  Expanded(
-                                    child: Text('${characterViewModel.results![index].name}',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16.sp,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                ],
+                            InkWell(
+                              onTap: (){
+                                final character = characterViewModel.results![index];
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>CharacterDetailScreen(results: character)));
+                              },
+                              child: Container(
+                                height:180.84.h ,width: 177.18.w,
+                              decoration: const BoxDecoration(
+                                // color: Colors.white.withOpacity(0.1),
+                               image: DecorationImage(image: AssetImage('assets/logo/Box.png'),fit: BoxFit.fill)
                               ),
-                            ),
-                          );
+                              child: Padding(
+                                padding:  EdgeInsets.symmetric(horizontal: 12.w,vertical: 12.h),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height: 131.97.h,width: 157.63,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15)
+                                      ),
+                                      child: Image.network('${characterViewModel.results![index].image}',
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                    SizedBox(height: 12.h),
+                                    Expanded(
+                                      child: Text('${characterViewModel.results![index].name}',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16.sp,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                                                        ),
+                            );
                         },
                       ),
                       characterViewModel.isLoadMoreState == false
