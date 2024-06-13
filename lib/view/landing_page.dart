@@ -13,8 +13,8 @@ class LandingScreen extends StatelessWidget {
       builder: (context, provider, child) {
         List<Widget> _screens = [
           CharacterListScreen(),
-          provider.selectedCharacter != null
-              ? CharacterDetailScreen(characterName: provider.selectedCharacter!)
+          provider.results != null
+              ? CharacterDetailScreen(results:provider.results! ,)
               : Center(child: Text('Select a character to view details')),
         ];
         
