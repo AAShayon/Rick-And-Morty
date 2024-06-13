@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:ricky_monty/model/core/api_urls.dart';
 import 'package:ricky_monty/model/service/remote/api_error_handler.dart';
@@ -5,12 +7,12 @@ import 'package:ricky_monty/model/service/remote/api_response.dart';
 import 'package:ricky_monty/model/service/remote/dio_service.dart';
 
 abstract class CharacterListService{
-  Future<ApiResponse> characterList(dynamic page, dynamic limit);
+  Future<ApiResponse> characterList(dynamic page);
 }
 
 class CharacterListRemoteDataSource extends CharacterListService{
   static final CharacterListRemoteDataSource _singleton = CharacterListRemoteDataSource._internal();
-  late DioService _dioService;
+  DioService? _dioService;
 
 
   factory CharacterListRemoteDataSource(){
@@ -21,13 +23,21 @@ class CharacterListRemoteDataSource extends CharacterListService{
   }
 
   @override
-  Future<ApiResponse> characterList(dynamic page, dynamic limit) async {
+  Future<ApiResponse> characterList(dynamic page) async {
     try{
-      Response? response=await _dioService.get(ApiUrl.character,queryParameters: {
-        'page': page,
-        'limit':limit,
-
-      });
+      log("============>characterList api cal from service");
+      // Response? response=await _dioService!.request(
+      //   ApiUrl().character,
+      //   queryParameters: {
+      //   'page': page,
+      //   },
+      // );
+      Response? response=await Dio().request(
+        'https://rickandmortyapi.com/api/character?$page',
+        options: Options(
+          method: 'GET',
+        ),
+      );
       return ApiResponse.withSuccess(response!);
     }catch(e){
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));
