@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ricky_monty/Modules/character/model/core/response_model/character_list_response_model.dart';
-import 'package:ricky_monty/Modules/character/viewModel/character_view_model.dart';
-import 'package:ricky_monty/utils/colors.dart';
-import 'package:ricky_monty/utils/styles.dart';
-import 'package:ricky_monty/viewModel/landing_view_model.dart';
+import 'package:ricky_morty/Modules/character/model/core/response_model/character_list_response_model.dart';
+import 'package:ricky_morty/Modules/character/viewModel/character_view_model.dart';
+import 'package:ricky_morty/utils/colors.dart';
+import 'package:ricky_morty/utils/styles.dart';
+import 'package:ricky_morty/viewModel/landing_view_model.dart';
 
 class SearchCharacter extends SearchDelegate {
   @override

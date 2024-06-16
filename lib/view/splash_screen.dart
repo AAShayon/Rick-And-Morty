@@ -1,7 +1,7 @@
 // import 'dart:async';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:ricky_monty/view/landing_page.dart';
+// import 'package:ricky_morty/view/landing_page.dart';
 //
 // class SplashScreen extends StatefulWidget {
 //
@@ -80,10 +80,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ricky_monty/utils/colors.dart';
-import 'package:ricky_monty/utils/styles.dart';
-import 'package:ricky_monty/view/landing_page.dart';
-import 'package:ricky_monty/view/widgets/fade_in_animation.dart';
+import 'package:ricky_morty/utils/colors.dart';
+import 'package:ricky_morty/utils/styles.dart';
+import 'package:ricky_morty/view/landing_page.dart';
+import 'package:ricky_morty/view/widgets/fade_in_animation.dart';
 
 
 class SplashScreen extends StatefulWidget {
