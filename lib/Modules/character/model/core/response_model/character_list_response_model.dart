@@ -7,7 +7,7 @@ String characterListResponseModelToJson(CharacterListResponseModel data) => json
 class CharacterListResponseModel {
   CharacterListResponseModel({
       Info? info, 
-      List<Results>? results,}){
+      List<Character>? results,}){
     _info = info;
     _results = results;
 }
@@ -17,19 +17,19 @@ class CharacterListResponseModel {
     if (json['results'] != null) {
       _results = [];
       json['results'].forEach((v) {
-        _results?.add(Results.fromJson(v));
+        _results?.add(Character.fromJson(v));
       });
     }
   }
   Info? _info;
-  List<Results>? _results;
+  List<Character>? _results;
 CharacterListResponseModel copyWith({  Info? info,
-  List<Results>? results,
+  List<Character>? results,
 }) => CharacterListResponseModel(  info: info ?? _info,
   results: results ?? _results,
 );
   Info? get info => _info;
-  List<Results>? get results => _results;
+  List<Character>? get results => _results;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -57,10 +57,10 @@ CharacterListResponseModel copyWith({  Info? info,
 /// url : "https://rickandmortyapi.com/api/character/1"
 /// created : "2017-11-04T18:48:46.250Z"
 
-Results resultsFromJson(String str) => Results.fromJson(json.decode(str));
-String resultsToJson(Results data) => json.encode(data.toJson());
-class Results {
-  Results({
+Character resultsFromJson(String str) => Character.fromJson(json.decode(str));
+String resultsToJson(Character data) => json.encode(data.toJson());
+class Character {
+  Character({
       dynamic id, 
       dynamic name, 
       dynamic status, 
@@ -87,7 +87,7 @@ class Results {
     _created = created;
 }
 
-  Results.fromJson(dynamic json) {
+  Character.fromJson(dynamic json) {
     _id = json['id'];
     _name = json['name'];
     _status = json['status'];
@@ -113,7 +113,7 @@ class Results {
   List<String>? _episode;
   dynamic _url;
   dynamic _created;
-Results copyWith({  dynamic id,
+Character copyWith({  dynamic id,
   dynamic name,
   dynamic status,
   dynamic species,
@@ -125,7 +125,7 @@ Results copyWith({  dynamic id,
   List<String>? episode,
   dynamic url,
   dynamic created,
-}) => Results(  id: id ?? _id,
+}) => Character(  id: id ?? _id,
   name: name ?? _name,
   status: status ?? _status,
   species: species ?? _species,
