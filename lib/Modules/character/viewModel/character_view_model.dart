@@ -1,10 +1,10 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:ricky_monty/Modules/character/model/core/response_model/character_list_response_model.dart';
-import 'package:ricky_monty/Modules/character/model/core/response_model/episodes_list_response_model.dart';
-import 'package:ricky_monty/Modules/character/model/service/remote/character_service.dart';
-import 'package:ricky_monty/model/service/remote/api_response.dart';
-import 'package:ricky_monty/utils/colors.dart';
+import 'package:ricky_morty/Modules/character/model/core/response_model/character_list_response_model.dart';
+import 'package:ricky_morty/Modules/character/model/core/response_model/episodes_list_response_model.dart';
+import 'package:ricky_morty/Modules/character/model/service/remote/character_service.dart';
+import 'package:ricky_morty/model/service/remote/api_response.dart';
+import 'package:ricky_morty/utils/colors.dart';
 
 class CharacterViewModel extends ChangeNotifier{
   final CharacterListService _characterListService=CharacterListRemoteDataSource();
