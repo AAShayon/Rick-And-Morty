@@ -89,7 +89,6 @@
        This README provides an overview of the project structure, dependencies, and setup instructions. Additionally, it outlines identified issues and their solutions, along with updated code snippets to improve the app's performance and user experience.
        
        For any further questions or contributions, feel free to open an issue or submit a pull request. Happy coding!
-
-    APK Download
+APK Download
         Download [Rick And Morty APK](https://drive.google.com/drive/folders/1v8IfzyHsh1FydTmpE9fm0uBjBvjXxtSH?usp=sharing)
 
