@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:ricky_monty/model/core/api_urls.dart';
+import 'package:ricky_morty/model/core/api_urls.dart';
 
 class DioService {
   static final DioService _singleton = DioService._internal();
