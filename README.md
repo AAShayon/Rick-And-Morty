@@ -79,9 +79,11 @@
   ##Screenshots
 <table>
   <tr>
-    <td><img src="assets/screenshoot/image1.jpeg" alt="Screenshot 1" width="400" height="932"></td>
-    <td><img src="assets/screenshoot/image2.jpeg" alt="Screenshot 2" width="400" height="932"></td>
-    <td><img src="assets/screenshoot/image3.jpeg" alt="Screenshot 3" width="400" height="932"></td>
+    <td><img src="assets/screenshoot/image1.jpeg" alt="Screenshot 1" width="400" height="800"></td>
+    <td><img src="assets/screenshoot/image2.jpeg" alt="Screenshot 2" width="400" height="800"></td>
+    <td><img src="assets/screenshoot/image3.jpeg" alt="Screenshot 3" width="400" height="800"></td>
+    <td><img src="assets/screenshoot/image4.jpeg" alt="Screenshot 3" width="400" height="800"></td>
+    <td><img src="assets/screenshoot/image5.jpeg" alt="Screenshot 3" width="400" height="800"></td>
   </tr>
 </table>
        
