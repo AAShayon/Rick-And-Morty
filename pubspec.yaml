@@ -1,4 +1,4 @@
-name: ricky_morty
+name: rick_morty
 description: "App of Cartoon Series Rick and Morty"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 

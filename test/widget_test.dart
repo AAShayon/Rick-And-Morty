@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ricky_monty/main.dart';
+import 'package:rick_morty/main.dart';
 
 
 void main() {

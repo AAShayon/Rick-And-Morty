@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import 'package:ricky_morty/utils/colors.dart';
-import 'package:ricky_morty/utils/styles.dart';
-import 'package:ricky_morty/view/widgets/custom_circular_button.dart';
+import 'package:rick_morty/utils/colors.dart';
+import 'package:rick_morty/utils/styles.dart';
+import 'package:rick_morty/view/widgets/custom_circular_button.dart';
 
 class NoInternetWidget extends StatelessWidget {
   final dynamic onPressed;

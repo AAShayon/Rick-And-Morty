@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ricky_morty/utils/colors.dart';
-import 'package:ricky_morty/utils/styles.dart';
+import 'package:rick_morty/utils/colors.dart';
+import 'package:rick_morty/utils/styles.dart';
 
 class CustomCircularButton extends StatelessWidget {
   final String text;

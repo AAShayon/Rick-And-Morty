@@ -1,11 +1,11 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:ricky_morty/Modules/character/model/core/response_model/character_list_response_model.dart';
-import 'package:ricky_morty/Modules/character/model/core/response_model/episodes_list_response_model.dart';
-import 'package:ricky_morty/model/service/remote/api_error_handler.dart';
-import 'package:ricky_morty/model/service/remote/api_response.dart';
-import 'package:ricky_morty/model/service/remote/dio_service.dart';
-import 'package:ricky_morty/model/core/api_urls.dart';
+import 'package:rick_morty/Modules/character/model/core/response_model/character_list_response_model.dart';
+import 'package:rick_morty/Modules/character/model/core/response_model/episodes_list_response_model.dart';
+import 'package:rick_morty/model/service/remote/api_error_handler.dart';
+import 'package:rick_morty/model/service/remote/api_response.dart';
+import 'package:rick_morty/model/service/remote/dio_service.dart';
+import 'package:rick_morty/model/core/api_urls.dart';
 
 abstract class CharacterListService {
   Future<ApiResponse> characterList(dynamic page);

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:ricky_morty/Modules/character/view/character_screen.dart';
-import 'package:ricky_morty/Modules/character/view/widgets/character_details.dart';
-import 'package:ricky_morty/utils/colors.dart';
-import 'package:ricky_morty/utils/styles.dart';
-import 'package:ricky_morty/view/widgets/no_widget.dart';
-import 'package:ricky_morty/view/widgets/reusable_image_form.dart';
-import 'package:ricky_morty/view/widgets/search_delegate.dart';
-import 'package:ricky_morty/viewModel/landing_view_model.dart';
+import 'package:rick_morty/Modules/character/view/character_screen.dart';
+import 'package:rick_morty/Modules/character/view/widgets/character_details.dart';
+import 'package:rick_morty/utils/colors.dart';
+import 'package:rick_morty/utils/styles.dart';
+import 'package:rick_morty/view/widgets/no_widget.dart';
+import 'package:rick_morty/view/widgets/reusable_image_form.dart';
+import 'package:rick_morty/view/widgets/search_delegate.dart';
+import 'package:rick_morty/viewModel/landing_view_model.dart';
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
 

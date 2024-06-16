@@ -3,12 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
-import 'package:ricky_morty/Modules/character/view/character_screen.dart';
-import 'package:ricky_morty/Modules/character/viewModel/character_view_model.dart';
-import 'package:ricky_morty/utils/colors.dart';
-import 'package:ricky_morty/view/landing_page.dart';
-import 'package:ricky_morty/view/splash_screen.dart';
-import 'package:ricky_morty/viewModel/landing_view_model.dart';
+import 'package:rick_morty/Modules/character/view/character_screen.dart';
+import 'package:rick_morty/Modules/character/viewModel/character_view_model.dart';
+import 'package:rick_morty/utils/colors.dart';
+import 'package:rick_morty/view/landing_page.dart';
+import 'package:rick_morty/view/splash_screen.dart';
+import 'package:rick_morty/viewModel/landing_view_model.dart';
 
 void main() {
   runApp(const MyApp());

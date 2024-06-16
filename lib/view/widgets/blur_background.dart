@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-import 'package:ricky_morty/utils/colors.dart';
+import 'package:rick_morty/utils/colors.dart';
 
 class BlurredBackgroundStack extends StatelessWidget {
   final String? backgroundImage;

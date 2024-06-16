@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:ricky_morty/utils/colors.dart';
-import 'package:ricky_morty/utils/styles.dart';
-import 'package:ricky_morty/view/widgets/reusable_image_form.dart';
-import 'package:ricky_morty/viewModel/landing_view_model.dart';
+import 'package:rick_morty/utils/colors.dart';
+import 'package:rick_morty/utils/styles.dart';
+import 'package:rick_morty/view/widgets/reusable_image_form.dart';
+import 'package:rick_morty/viewModel/landing_view_model.dart';
 class NoSelectWidget extends StatelessWidget {
   const NoSelectWidget({super.key});
 

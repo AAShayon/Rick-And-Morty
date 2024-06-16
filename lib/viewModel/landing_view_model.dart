@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ricky_morty/Modules/character/model/core/response_model/character_list_response_model.dart';
+import 'package:rick_morty/Modules/character/model/core/response_model/character_list_response_model.dart';
 
 class LandingViewModel with ChangeNotifier {
   int _currentIndex = 0;

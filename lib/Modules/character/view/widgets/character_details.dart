@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
-import 'package:ricky_morty/Modules/character/model/core/response_model/character_list_response_model.dart';
-import 'package:ricky_morty/Modules/character/view/widgets/reusable_specification_container.dart';
-import 'package:ricky_morty/Modules/character/viewModel/character_view_model.dart';
-import 'package:ricky_morty/utils/colors.dart';
-import 'package:ricky_morty/utils/styles.dart';
-import 'package:ricky_morty/view/widgets/blur_background.dart';
-import 'package:ricky_morty/view/widgets/no_internet_widget.dart';
-import 'package:ricky_morty/viewModel/landing_view_model.dart';
+import 'package:rick_morty/Modules/character/model/core/response_model/character_list_response_model.dart';
+import 'package:rick_morty/Modules/character/view/widgets/reusable_specification_container.dart';
+import 'package:rick_morty/Modules/character/viewModel/character_view_model.dart';
+import 'package:rick_morty/utils/colors.dart';
+import 'package:rick_morty/utils/styles.dart';
+import 'package:rick_morty/view/widgets/blur_background.dart';
+import 'package:rick_morty/view/widgets/no_internet_widget.dart';
+import 'package:rick_morty/viewModel/landing_view_model.dart';
 
 class CharacterDetailScreen extends StatefulWidget {
   final Character character;
