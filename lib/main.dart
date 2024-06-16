@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
-import 'package:ricky_monty/Modules/character/view/character_screen.dart';
-import 'package:ricky_monty/Modules/character/viewModel/character_view_model.dart';
-import 'package:ricky_monty/utils/colors.dart';
-import 'package:ricky_monty/view/landing_page.dart';
-import 'package:ricky_monty/view/splash_screen.dart';
-import 'package:ricky_monty/viewModel/landing_view_model.dart';
+import 'package:ricky_morty/Modules/character/view/character_screen.dart';
+import 'package:ricky_morty/Modules/character/viewModel/character_view_model.dart';
+import 'package:ricky_morty/utils/colors.dart';
+import 'package:ricky_morty/view/landing_page.dart';
+import 'package:ricky_morty/view/splash_screen.dart';
+import 'package:ricky_morty/viewModel/landing_view_model.dart';
 
 void main() {
-  // await WidgetsBinding.instance.initInstances();
   runApp(const MyApp());
 }
 
@@ -33,14 +33,19 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create:(context)=>LandingViewModel()),
           ChangeNotifierProvider(create:(context)=>CharacterViewModel()),
         ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Rick And Morty',
-          theme: ThemeData(
-            primaryColor: AppColors.primaryColor,
-            scaffoldBackgroundColor:  AppColors.baseColorBlack,
+        child: StreamProvider<InternetConnectionStatus>(
+          initialData: InternetConnectionStatus.connected,
+          create: (_) {
+            return InternetConnectionChecker().onStatusChange;
+          },child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Rick And Morty',
+            theme: ThemeData(
+              primaryColor: AppColors.primaryColor,
+              scaffoldBackgroundColor:  AppColors.baseColorBlack,
+            ),
+            home:const SplashScreen(),
           ),
-          home:const SplashScreen(),
         ),
       ),
     );
