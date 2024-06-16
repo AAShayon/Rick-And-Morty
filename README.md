@@ -91,5 +91,5 @@
        For any further questions or contributions, feel free to open an issue or submit a pull request. Happy coding!
 
     APK Download
-        Download [Business Manager APK](https://drive.google.com/drive/folders/1v8IfzyHsh1FydTmpE9fm0uBjBvjXxtSH?usp=sharing)
+        Download [Rick And Morty APK](https://drive.google.com/drive/folders/1v8IfzyHsh1FydTmpE9fm0uBjBvjXxtSH?usp=sharing)
 
