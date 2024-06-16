@@ -134,7 +134,7 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
                                 final landingProvider=Provider.of<LandingViewModel>(context,listen: false);
                                   final character = characterViewModel.character![index];
                                   landingProvider.selectCharacter(character);
-                                  characterViewModel.getCharacterEpisodes(context, character);
+                                  // characterViewModel.getCharacterEpisodes(context, character);
                                 },
                                 child: CustomImageFrame(
                                   child: Padding(
