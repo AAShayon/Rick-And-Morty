@@ -1,27 +1,26 @@
 import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ricky_monty/Modules/character/model/core/response_model/character_list_response_model.dart';
+import 'package:ricky_monty/Modules/character/model/core/response_model/episodes_list_response_model.dart';
 import 'package:ricky_monty/Modules/character/model/service/remote/character_service.dart';
 import 'package:ricky_monty/model/service/remote/api_response.dart';
+import 'package:ricky_monty/utils/colors.dart';
 
 class CharacterViewModel extends ChangeNotifier{
   final CharacterListService _characterListService=CharacterListRemoteDataSource();
   bool _isLoadingState=false;
   bool _isLoadMoreState=false;
   CharacterListResponseModel? _characterListResponseModel;
-  List<Results> _results=[];
-  List<Results>? _newResults;
-
-  // int _count=10;
+  List<Character> _character=[];
+  List<Character>? _newCharacter;
+  List<Episode> _episodes = [];
   int _page=1;
+
+
+
   ///For Pagination
-
-
   void resetPage(){
     _page=1;
-    // _count=10;
     notifyListeners();
   }
   void pageCounter({required BuildContext context}){
@@ -30,16 +29,16 @@ class CharacterViewModel extends ChangeNotifier{
   }
 
   void clearList(){
-    _results.clear();
+    _character.clear();
     notifyListeners();
   }
   bool get isLoadingState => _isLoadingState;
   bool get isLoadMoreState => _isLoadMoreState;
   CharacterListResponseModel? get characterListResponseModel => _characterListResponseModel;
   int? get page => _page;
-  // int? get count => _count;
-  List<Results> get results => _results;
-  List<Results>? get newResults => _newResults;
+  List<Character> get character => _character;
+  List<Character>? get newCharacter => _newCharacter;
+  List<Episode> get episodes => _episodes;
 
   Future<bool> characterListFetch(BuildContext context,{dynamic page ,required bool isLoadMore})async{
  _isLoadingState=true;
@@ -48,7 +47,7 @@ class CharacterViewModel extends ChangeNotifier{
  if(isLoadMore){
    _isLoadMoreState=true;
  }else{
-   _results=[];
+   _character=[];
  }
  try{
    log("============>characterList api call");
@@ -56,8 +55,8 @@ class CharacterViewModel extends ChangeNotifier{
  if(apiResponse.response !=null){
    if(apiResponse.response!.statusCode == 200 ){
      _characterListResponseModel =CharacterListResponseModel.fromJson(apiResponse.response!.data);
-      _newResults=_characterListResponseModel!.results;
-      _results=_results + _newResults!;
+      _newCharacter=_characterListResponseModel!.results;
+      _character=_character + _newCharacter!;
       _isLoadingState=false;
       isFetchList=true;
      if(isLoadMore){
@@ -67,8 +66,9 @@ class CharacterViewModel extends ChangeNotifier{
       if(context.mounted){
         ScaffoldMessenger.of(context).removeCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar( const SnackBar(
-          backgroundColor: Colors.green,
-          content: Center(child: Text('{SuccessFully Fetch Data}',style: TextStyle(color: Colors.white),)),
+          duration: Duration(milliseconds: 1),
+          backgroundColor: AppColors.primaryColor,
+          content: Center(child: Text('{SuccessFully Fetch Data}',style: TextStyle(color: AppColors.baseColorWhite),)),
         ));
       }
    }
@@ -81,10 +81,10 @@ class CharacterViewModel extends ChangeNotifier{
      notifyListeners();
      if(context.mounted){
        ScaffoldMessenger.of(context).removeCurrentSnackBar();
-       ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+       ScaffoldMessenger.of(context).showSnackBar( const SnackBar(
          duration: Duration(milliseconds: 1),
          backgroundColor: Colors.red,
-         content: Center(child: Text(' {error}',style: const TextStyle(color: Colors.white),)),
+         content: Center(child: Text(' {error}',style: TextStyle(color: Colors.white),)),
        ));
      }
    }
@@ -99,9 +99,9 @@ class CharacterViewModel extends ChangeNotifier{
    if(context.mounted){
      ScaffoldMessenger.of(context).removeCurrentSnackBar();
      ScaffoldMessenger.of(context).showSnackBar( SnackBar(
-       duration: Duration(milliseconds: 1),
+       duration: const Duration(milliseconds: 1),
        backgroundColor: Colors.red,
-       content: Center(child: Text(' ${apiResponse.error}',style: const TextStyle(color: Colors.white),)),
+       content: Center(child: Text(' ${apiResponse.error}',style: const TextStyle(color: AppColors.baseColorWhite),)),
      ));
    }
  }
@@ -115,7 +115,7 @@ class CharacterViewModel extends ChangeNotifier{
    if(context.mounted){
      ScaffoldMessenger.of(context).removeCurrentSnackBar();
      ScaffoldMessenger.of(context).showSnackBar( SnackBar(
-       duration: Duration(milliseconds: 1),
+       duration: const Duration(milliseconds: 1),
        backgroundColor: Colors.red,
        content: Center(child: Text(' $e ',style: const TextStyle(color: Colors.white),)),
      ));
@@ -124,7 +124,66 @@ class CharacterViewModel extends ChangeNotifier{
   notifyListeners();
  return isFetchList;
   }
-
-
+  Future<void> getCharacterEpisodes(BuildContext context, Character character) async {
+    _isLoadingState = true;
+    _episodes=[];
+    try {
+      _episodes.clear();
+      _episodes = await _characterListService.getEpisodes(character.episode!);
+      _isLoadingState = false;
+      notifyListeners();
+    } catch (e) {
+      _isLoadingState = false;
+      log('Error fetching episodes: $e');
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).removeCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          duration: const Duration(milliseconds: 1),
+          backgroundColor: Colors.red,
+          content: Center(child: Text('$e', style: const TextStyle(color: AppColors.baseColorWhite))),
+        ));
+      }
+      notifyListeners();
+    }
+  }
+  Future<List<Character>> getSearchCharacter(BuildContext context, String name) async {
+    _isLoadingState = true;
+    _characterListResponseModel = null;
+    List<Character> searchResults = [];
+    log("Searching for character: $name"); // Log the query
+    try {
+      ApiResponse apiResponse = await _characterListService.getCharacter(name);
+      if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+        _characterListResponseModel = CharacterListResponseModel.fromJson(apiResponse.response!.data);
+        searchResults = _characterListResponseModel!.results!;
+        _isLoadingState = false;
+        notifyListeners();
+      } else {
+        _isLoadingState = false;
+        notifyListeners();
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).removeCurrentSnackBar();
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            duration: Duration(milliseconds: 1),
+            backgroundColor: Colors.red,
+            content: Center(child: Text(' {error}', style: TextStyle(color: Colors.white))),
+          ));
+        }
+      }
+    } catch (e) {
+      _isLoadingState = false;
+      notifyListeners();
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).removeCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          duration: const Duration(milliseconds: 1),
+          backgroundColor: Colors.red,
+          content: Center(child: Text(' $e ', style: const TextStyle(color: Colors.white))),
+        ));
+      }
+    }
+    notifyListeners();
+    return searchResults;
+  }
 
 }
