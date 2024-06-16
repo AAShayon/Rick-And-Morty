@@ -65,11 +65,13 @@
                
                   3. Landing ViewModel
                      The LandingViewModel manages the state of the current selected character and the navigation index.
+                  4. Search Screen 
+                     Search for characters by name.
                
-                  4. Splash Screen
+                  5. Splash Screen
                      The SplashScreen is displayed when the app is first launched. It shows an animated logo and transitions to the main content after a short delay.
                
-                  5. App Logo
+                  6. App Logo
                      The app logo is defined in the pubspec.yaml file under flutter_launcher_icons. The logo is located in the assets/logo directory.
                
                Ensure the logo image is located at assets/logo/applogo.png.
