@@ -76,9 +76,14 @@
                
                Ensure the logo image is located at assets/logo/applogo.png.
 
-    ## Screenshots
-    
-    <img src="assets/screenshoot/image1.jpeg" alt="Screenshot 1" width="340" height="340"> <img src="assets/screenshoot/image2.jpeg" alt="Screenshot 2" width="340" height="340"> <img src="assets/screenshoot/image3.jpeg" alt="Screenshot 3" width="340" height="340">
+  ##Screenshots
+<table>
+  <tr>
+    <td><img src="assets/screenshoot/image1.jpeg" alt="Screenshot 1" width="400" height="932"></td>
+    <td><img src="assets/screenshoot/image2.jpeg" alt="Screenshot 2" width="400" height="932"></td>
+    <td><img src="assets/screenshoot/image3.jpeg" alt="Screenshot 3" width="400" height="932"></td>
+  </tr>
+</table>
        
      Conclusion
        This README provides an overview of the project structure, dependencies, and setup instructions. Additionally, it outlines identified issues and their solutions, along with updated code snippets to improve the app's performance and user experience.
